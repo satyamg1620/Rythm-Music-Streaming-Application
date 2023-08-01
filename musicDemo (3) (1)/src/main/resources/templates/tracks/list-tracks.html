@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+
+<title>Track Directory</title>
+</head>
+
+<body>
+
+
+	<div class="container">
+
+		<h3>Track Directory</h3>
+		<hr>
+		<a th:href="@{/songs/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3"> Add Track </a>
+		<table class="table table-bordered table-striped">
+			<thead class="table-dark">
+				<tr>
+					<th>Track</th>
+					<th>Duration</th>
+					<th>Track Path</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempTrack : ${tracks}">
+
+					<td th:text="${tempTrack.trackName}" />
+					<td th:text="${tempTrack.duration}" />
+					<td th:text="${tempTrack.trackPath}" />
+					<!-- Add update button link -->
+					<td><a
+						th:href="@{/songs/showFormForUpdate(id=${tempTrack.id})}"
+						class="btn btn-info btn-sm"> Update </a> <a
+						th:href="@{/songs/delete(id=${tempTrack.id})}"
+						class="btn btn-danger btn-sm"
+						onclick="if (!(confirm('Are you sure you want to delete this track?'))) return false">
+							Delete </a></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>
+
+
+

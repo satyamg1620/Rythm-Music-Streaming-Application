@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Music Archive</title>
+<!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+	rel="stylesheet"> -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="hello.js"></script>
+</head>
+<body>
+
+	<div>
+		<h1 class="text-6xl font-extrabold">Music Archive</h1>
+		<img alt=""
+			src="https://media.tenor.com/q0LOTp2lumIAAAAC/cat-listening-to-music.gif">
+		<!--<p th:text="'Song is ' + ${theSong}" class="funny">  -->
+	</div>
+	<div>
+		<table class="table-auto">
+			<thead>
+				<tr>
+					<th>Song</th>
+					<th>Artist</th>
+					<th>Year</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+					<td>Malcolm Lockyer</td>
+					<td><audio src="streaming/audio/Coldplay__A_Sky_Full_Of_Stars"
+							controls preload="none">
+						</audio></td>
+
+				</tr>
+				<tr>
+					<td>Witchy Woman</td>
+					<td>The Eagles</td>
+					<td><audio controls
+							src="https://file-examples.com/storage/fedb66d828647a2629b3efb/2017/11/file_example_MP3_1MG.mp3">
+						</audio></td>
+				</tr>
+				<tr>
+					<td>Shining Star</td>
+					<td>Earth, Wind, and Fire</td>
+					<td>1975</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+	</div>
+	<div>
+		<table class="table-auto">
+			<thead>
+				<tr>
+					<th>Track Name</th>
+					<th>Play</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="trackName"></td>
+					<td><audio id='image' class="responsive" src="" controls
+							preload="none">
+						</audio></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<div>
+            <p class="trackName">The ID is </p>
+            <p class="trackPath">The content is </p>
+        </div>
+
+
+</body>
+</html>

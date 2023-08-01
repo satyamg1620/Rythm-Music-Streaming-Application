@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<script type="text/javascript" th:src="@{/js/playlist.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/indexCSS.css}">
+<title>Playlist</title>
+</head>
+<body>
+
+	<div class="navbar">
+		<nav>
+			<div class="left_menu">
+				<a href="#home"><img src="Rythm_logo.png" width="100px"
+					height="80px" id=logo alt="Logo image" style="margin-left: 10px;" /></a>
+				<a href="#home">HOME</a> <a href="#news">PODCASTS</a>
+				<!-- <a href="#contact">LIBRARY</a> -->
+				<div class="dropdown">
+					<button class="dropbtn">
+						LIBRARY <i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						<a th:href="@{/users/myMusic}">Music</a> <a
+							th:href="@{/users/myPodcast}">Podcasts</a>
+					</div>
+				</div>
+			</div>
+			<div class="right_menu">
+				<div class="dropdown">
+					<button class="dropbtn">
+						ACCOUNT <i class="fa fa-caret-down"></i>
+					</button>
+					<div class="dropdown-content">
+						<!-- <a href="#">LOGOUT</a> -->
+						<form action="#" th:action="@{/logout}" method="POST">
+							<a href="#"><input type="submit" value="LOGOUT" /></a>
+						</form>
+
+						<a href="#">Link 2</a> <a href="#">Link 3</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+	</div>
+
+	<div hidden="hidden">
+		<p id="playlistId" th:text="${playlistId}"></p>
+	</div>
+	<div align="center">
+		<!-- Display Username and Role -->
+		<table class="table table-striped">
+			<tr class="bg-info">
+				<th class="highlight"><div></div></th>
+				<th>Track</th>
+				<th>Path</th>
+			</tr>
+			<tbody id="myTable">
+			</tbody>
+		</table>
+		<hr>
+	</div>
+
+
+	<div class="container" align="center">
+		<div class="player">
+
+			<div class="song-info">
+				<div class="song-details">
+					<span id="song-name"></span> <span id="song-artist"></span>
+				</div>
+
+				<!-- <i class="fa-solid fa-heart"></i> -->
+				<p>
+					<i id="likeHeart" class="far fa-heart"></i>
+				</p>
+			</div>
+			<div class="song-duration">
+				<div class="song-time">
+					<div class="song-progress">
+						<audio id='image' src="" class="audio responsive"></audio>
+					</div>
+				</div>
+				<div class="time">
+					<span>0:00</span> <span>0:00</span>
+				</div>
+			</div>
+			<div>
+				<div class="controls">
+					<button class="player-btn" type="button">
+						<i class="fa-solid fa-shuffle"></i>
+					</button>
+					<button class="player-btn prev-btn" type="button">
+						<i class="fa-solid fa-backward"></i>
+					</button>
+					<button id="playPause" class="player-btn play-pause" type="button">
+						<i class="fa-solid fa-play"></i>
+					</button>
+					<button class="player-btn next-btn" type="button">
+						<i class="fa-solid fa-forward"></i>
+					</button>
+					<button class="player-btn" type="button">
+						<i class="fa-solid fa-repeat"></i>
+					</button>
+				</div>
+				<div class="vol-slider">
+					<button class="player-btn volume-btn" type="button">
+						<i class="fa-solid fas fa-volume-up"></i>
+					</button>
+					<input type="range" id="slider" min="0" max="100" value="50">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+</html>

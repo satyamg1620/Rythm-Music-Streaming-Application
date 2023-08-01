@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- <html lang="en" > -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<title>Music Archive</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src=""
+	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+	crossorigin="anonymous"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script src="index.js"></script>
+<link rel="stylesheet" href="indexCSS.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Signika+Negative:wght@300;400;500;600;700&display=swap"
+	rel="stylesheet" />
+
+<!-- Components Inclusion -->
+<script src="components/header.js" type="text/javascript" defer></script>
+<script src="components/footer.js" type="text/javascript" defer></script>
+<script src="components/music-table.js" type="text/javascript" defer></script>
+
+</head>
+<body>
+	<div class="navbar">
+		<nav>
+			<div class="left_menu">
+				<a href="#home"><img src="Rythm_logo.png" width="100px"
+					height="80px" id=logo alt="Logo image" style="margin-left: 10px;" /></a>
+				<a id="home-link">HOME</a> <a href="#news">MUSIC</a> <a
+					th:href="@{/users/myPodcast}">PODCASTS</a>
+				<!-- <a href="#contact">LIBRARY</a> -->
+			</div>
+			<div class="right_menu">
+				<a id="home-link">PROFILE</a>
+
+				<form action="#" th:action="@{/logout}" method="POST">
+					<a href="#"><input type="submit" value="LOGOUT" /></a>
+				</form>
+
+			</div>
+		</nav>
+	</div>
+	<!-- Home page - All tracks list -->
+	<music-table-component></music-table-component>
+
+	<div align="center" id="my-music" style="color: white" hidden="hidden">
+		<a href="#" class="btn btn-primary btn-sm mb-3"> Create PlayList </a>
+		<div id="playlist-list" class="row row-cols-3 g-3"></div>
+	</div>
+
+	<div sec:authorize="hasRole('ADMIN')">
+		<p>
+			<!-- FOR ADMIN ACCESS -->
+			<a th:href="@{/users/list}">ADMIN ACESSIBLES</a> (Only For Admins)
+		</p>
+	</div>
+	<music-player-component></music-player-component>
+	<!-- 	<div id="react"></div>
+    <script src="built/bundle.js"></script> -->
+</body>
+</html>

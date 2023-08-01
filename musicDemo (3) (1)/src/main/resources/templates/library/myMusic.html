@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<title>Library: My Music</title>
+</head>
+<body>
+	<div>
+		<h3>My Music</h3>
+	</div>
+	<!-- <div>
+		<a th:href="@{/users/list}">My Likes</a>
+	</div> -->
+	<div class="container">
+
+		<h3>Add Playlists</h3>
+		<hr>
+		<a th:href="@{/users/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3"> Add User </a>
+		<table class="table table-bordered table-striped">
+			<thead class="table-dark">
+				<tr>
+					<th>Playlist Name</th>
+					<!-- th>Full Name</th>
+					<th>Email</th> -->
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>My Likes</td>
+					<td><a th:href="@{/streamingMyLikes}">Link</a> </td>
+					
+				</tr>
+				<tr th:each="tempPlaylist : ${playlists}">
+
+					<td th:text="${tempPlaylist.playlistName}" />
+					<!-- <td th:text="${tempUser.fullName}" />
+					<td th:text="${tempUser.email}" /> -->
+					<!-- Add update button link -->
+					 <td>
+					 	<a th:href="@{/streamingPlaylist(id=${tempPlaylist.id})}">Link</a>
+					 	
+						<!-- <a th:href="@{/users/showFormForUpdate(username=${tempUser.username})}"
+						class="btn btn-info btn-sm"> Update </a>  -->
+						<!-- <a th:href="@{/users/delete(username=${tempUser.username})}"
+						class="btn btn-danger btn-sm"
+						onclick="if (!(confirm('Are you sure you want to delete this user?'))) return false">
+							Delete </a></td>  -->
+
+
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<a th:href="@{/}">BACK TO SONGS PAGE</a>
+	</div>
+
+</body>
+</html>
